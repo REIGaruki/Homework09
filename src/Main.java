@@ -2,6 +2,7 @@ public class Main {
     public static void main(String[] args) {
         task1();
         task2();
+        task3();
     }
     public static int[] generateRandomArray() {
         java.util.Random random = new java.util.Random();
@@ -33,5 +34,13 @@ public class Main {
         }
         System.out.println(maximalSpend);
         System.out.println(minimalSpend);
+    }
+    public static void task3() {
+        int[] arr = generateRandomArray();
+        int totalSpends = 0;
+        for (int i : arr) {
+            totalSpends += i;
+        }
+        System.out.println((float) totalSpends / arr.length);
     }
 }
