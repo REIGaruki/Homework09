@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         task1();
+        task2();
     }
     public static int[] generateRandomArray() {
         java.util.Random random = new java.util.Random();
@@ -17,5 +18,20 @@ public class Main {
             totalSpends += i;
         }
         System.out.println(totalSpends);
+    }
+    public static void task2() {
+        int[] arr = generateRandomArray();
+        int minimalSpend = 200_000;
+        int maximalSpend = 100_000;
+        for (int i : arr) {
+            if (i > maximalSpend) {
+                maximalSpend = i;
+            }
+            if (i < minimalSpend) {
+                minimalSpend = i;
+            }
+        }
+        System.out.println(maximalSpend);
+        System.out.println(minimalSpend);
     }
 }
