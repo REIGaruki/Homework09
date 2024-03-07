@@ -2,23 +2,24 @@ public class Main {
     public static void main(String[] args) {
         int minimalSpend = 100_000; //входные данные, минимально-возможная трата за один день
         int maximalSpend = 200_000; //входные данные, максимально-возможная трата за один день
-        int currentYear = 2024;//входные данные, текущий год
-        int currentMonth = 2;//входные данные, текущий месяц
+        int currentYear = 2024; //входные данные, текущий год
+        int currentMonth = 2; //входные данные, текущий месяц
+        char[] name = { 'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
         task1(daysInMonth(currentYear, currentMonth), minimalSpend, maximalSpend);
         task2(daysInMonth(currentYear, currentMonth), minimalSpend, maximalSpend);
         task3(daysInMonth(currentYear, currentMonth), minimalSpend, maximalSpend);
-        task4();
+        task4(name);
     }
-    public static int[] generateRandomArray(int length, int min, int max) {
+    public static int[] generateIntegerArray(int length, int min, int max) {
         java.util.Random random = new java.util.Random();
         int[] arr = new int[length];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = max - random.nextInt(min);
+            arr[i] = random.nextInt(max - min) + min;
         }
         return arr;
     }
     public static void task1(int days, int minimalSpend, int maximalSpend) {
-        int[] spends = generateRandomArray(days, minimalSpend, maximalSpend);
+        int[] spends = generateIntegerArray(days, minimalSpend, maximalSpend);
         int totalSpends = 0;
         for (int i : spends) {
             totalSpends += i;
@@ -26,10 +27,9 @@ public class Main {
         System.out.println("Сумма трат за месяц составила " + totalSpends + " рублей");
     }
     public static void task2(int days, int minimalSpend, int maximalSpend) {
-        int[] spends = generateRandomArray(days, minimalSpend, maximalSpend);
-        int b = maximalSpend;//меняем местами верхнюю и нижнюю границы с помощью буферной переменной
-        maximalSpend = minimalSpend;
-        minimalSpend = b;
+        int[] spends = generateIntegerArray(days, minimalSpend, maximalSpend);
+        minimalSpend = Integer.MAX_VALUE;
+        maximalSpend = Integer.MIN_VALUE;
         for (int i : spends) {
             if (i > maximalSpend)
                 maximalSpend = i;
@@ -40,15 +40,14 @@ public class Main {
                 "Максимальная сумма трат за день составила " + maximalSpend + " рублей");
     }
     public static void task3(int days, int minimalSpend, int maximalSpend) {
-        int[] spends = generateRandomArray(days, minimalSpend, maximalSpend);
+        int[] spends = generateIntegerArray(days, minimalSpend, maximalSpend);
         int totalSpends = 0;
         for (int i : spends) {
             totalSpends += i;
         }
         System.out.println("Средняя сумма трат за месяц составила " + (float) totalSpends / spends.length + " рублей");
     }
-    public static void task4() {
-        char[] reverseFullName = { 'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
+    public static void task4(char[] reverseFullName) {
         for (int i = reverseFullName.length - 1; i >= 0; i--) {
             System.out.print(reverseFullName[i]);
         }
