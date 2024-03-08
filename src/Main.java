@@ -14,7 +14,11 @@ public class Main {
         java.util.Random random = new java.util.Random();
         int[] arr = new int[length];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(max - min) + min;
+            if (min < max) {
+                arr[i] = random.nextInt(max - min) + min;
+            } else {
+                arr[i] = random.nextInt(min - max) + max;
+            }
         }
         return arr;
     }
